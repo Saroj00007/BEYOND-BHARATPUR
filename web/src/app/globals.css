@@ -351,6 +351,11 @@ button { color: inherit; }
 .corridor-showcase-heading .recommendation-heading { margin-top: 0; }
 .corridor-showcase-heading h3 { margin: 4px 0 6px; color: #23483b; font-size: 19px; letter-spacing: -.45px; }
 .corridor-showcase-heading p { max-width: 650px; margin: 0 0 13px; color: #718178; font-size: 11px; line-height: 1.6; }
+.showcase-tabs { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; padding: 4px; border: 1px solid #e5ece5; border-radius: 8px; background: #f7faf7; }
+.showcase-tabs button { display: inline-flex; align-items: center; gap: 6px; padding: 7px 9px; border: 1px solid transparent; border-radius: 6px; background: transparent; color: #718178; cursor: pointer; font-size: 10px; font-weight: 700; }
+.showcase-tabs button:hover { color: #2d6650; }
+.showcase-tabs button.is-active { border-color: #c5dfcc; background: #fff; color: #176c55; box-shadow: 0 2px 7px #2546370a; }
+.showcase-tabs button span { min-width: 17px; padding: 2px 4px; border-radius: 99px; background: #e9f2eb; color: #5c866c; font-size: 9px; text-align: center; }
 .corridor-service-list { display: grid; gap: 8px; }
 .corridor-service-card { display: grid; grid-template-columns: 38px minmax(0, 1fr); gap: 13px; padding: 14px 15px 14px 13px; border: 1px solid #e7ede7; border-radius: 9px; background: #fcfdfc; transition: border-color .15s ease, transform .15s ease, box-shadow .15s ease; }
 .corridor-service-card:hover { border-color: #bfd8c6; box-shadow: 0 7px 18px #2546370c; transform: translateY(-1px); }

@@ -21,6 +21,7 @@ import {
   Clock3,
 } from "lucide-react";
 import { bharatpurMeghauliServices, type BharatpurMeghauliService } from "@/data/bharatpurMeghauliServices";
+import { mainTourismPlaces, type MainTourismPlace } from "@/data/bharatpurMeghauliTourism";
 
 type TravelStyle = "slow" | "balanced" | "adventurous";
 type Detour = "short" | "moderate" | "flexible";
@@ -262,7 +263,7 @@ function ResultView({ result }: { result: DiscoveryResult }) {
       <div className="route-metrics" aria-label="Measured route metrics">
         <div><strong>{result.route.distanceKm.toFixed(1)} km</strong><span>road distance</span></div>
         <div><strong>{Math.round(result.route.durationMinutes)} min</strong><span>estimated drive</span></div>
-        <div><strong>{showCorridorShowcase ? showcaseServices.length : result.recommendations.length}</strong><span>{showCorridorShowcase ? "corridor listings" : "verified stops"}</span></div>
+        <div><strong>{showCorridorShowcase ? mainTourismPlaces.length : result.recommendations.length}</strong><span>{showCorridorShowcase ? "tourism places" : "verified stops"}</span></div>
       </div>
       <p className="result-overview">{result.overview}</p>
       <div className="route-character"><Route size={16} /><span>{result.routeCharacter}</span></div>
@@ -300,38 +301,73 @@ function ResultView({ result }: { result: DiscoveryResult }) {
 }
 
 function CorridorServiceShowcase({ services }: { services: BharatpurMeghauliService[] }) {
+  const [activeTab, setActiveTab] = useState<"tourism" | "hotels" | "other">("tourism");
+  const hotels = services.filter((service) => /stay/i.test(service.category));
+  const otherServices = services.filter((service) => !/stay/i.test(service.category));
+  const listCount = activeTab === "tourism" ? mainTourismPlaces.length : activeTab === "hotels" ? hotels.length : otherServices.length;
+
   return (
     <section className="corridor-showcase" aria-labelledby="corridor-showcase-title">
       <div className="corridor-showcase-heading">
         <div>
-          <div className="recommendation-heading"><span className="form-step">DEMO DIRECTORY</span><span>{services.length} listings</span></div>
+          <div className="recommendation-heading"><span className="form-step">DEMO DIRECTORY</span><span>{listCount} {activeTab === "tourism" ? "places" : "listings"}</span></div>
           <h3 id="corridor-showcase-title">Places along the Bharatpur Airport → Meghauli corridor</h3>
-          <p>These names come directly from the supplied corridor workbook and are shown for the demo. Exact map pins and road distances will be connected in the map phase.</p>
+          <p>The main list is limited to selected tourism places. Hotels and secondary services are available as optional showcase tabs.</p>
         </div>
       </div>
-      <div className="corridor-service-list">
-        {services.map((service) => {
-          const mapQuery = encodeURIComponent(`${service.name}, ${service.address}`);
-          return (
-            <article className="corridor-service-card" key={`${service.routeOrder}-${service.name}`}>
-              <div className="corridor-service-order">{String(service.routeOrder).padStart(2, "0")}</div>
-              <div className="corridor-service-body">
-                <div className="recommendation-meta"><span>{service.category}</span><span>{service.routeArea}</span></div>
-                <h4>{service.name}</h4>
-                <p>{service.address}</p>
-                <div className="corridor-service-details">
-                  {service.phone && <span><Phone size={11} />{service.phone}</span>}
-                  {service.hours && <span><Clock3 size={11} />{service.hours}</span>}
-                </div>
-                <div className="corridor-service-footer">
-                  <small>{service.sourceNote}</small>
-                  <a href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noreferrer">Search map <ExternalLink size={11} /></a>
-                </div>
-              </div>
-            </article>
-          );
-        })}
+      <div className="showcase-tabs" role="tablist" aria-label="Corridor showcase categories">
+        <button className={activeTab === "tourism" ? "is-active" : ""} type="button" role="tab" aria-selected={activeTab === "tourism"} onClick={() => setActiveTab("tourism")}>Tourism places <span>{mainTourismPlaces.length}</span></button>
+        <button className={activeTab === "hotels" ? "is-active" : ""} type="button" role="tab" aria-selected={activeTab === "hotels"} onClick={() => setActiveTab("hotels")}>Hotels & stays <span>{hotels.length}</span></button>
+        <button className={activeTab === "other" ? "is-active" : ""} type="button" role="tab" aria-selected={activeTab === "other"} onClick={() => setActiveTab("other")}>Other services <span>{otherServices.length}</span></button>
       </div>
+
+      {activeTab === "tourism" ? <TourismPlaceList places={mainTourismPlaces} /> : <div className="corridor-service-list">
+        {(activeTab === "hotels" ? hotels : otherServices).map((service) => <ServiceDirectoryCard key={`${service.routeOrder}-${service.name}`} service={service} />)}
+      </div>}
     </section>
+  );
+}
+
+function TourismPlaceList({ places }: { places: MainTourismPlace[] }) {
+  return <div className="corridor-service-list">
+    {places.map((place, index) => {
+      const mapQuery = encodeURIComponent(place.address ? `${place.name}, ${place.address}` : place.name);
+      return (
+        <article className="corridor-service-card tourism-place-card" key={place.name}>
+          <div className="corridor-service-order">{String(index + 1).padStart(2, "0")}</div>
+          <div className="corridor-service-body">
+            <div className="recommendation-meta"><span>{place.category}</span><span>{place.routeArea}</span></div>
+            <h4>{place.name}</h4>
+            <p>{place.description}</p>
+            <div className="corridor-service-footer">
+              <small>{place.address || "Location details will be connected in the map phase."}</small>
+              <a href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noreferrer">Search map <ExternalLink size={11} /></a>
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>;
+}
+
+function ServiceDirectoryCard({ service }: { service: BharatpurMeghauliService }) {
+  const mapQuery = encodeURIComponent(`${service.name}, ${service.address}`);
+  return (
+    <article className="corridor-service-card" key={`${service.routeOrder}-${service.name}`}>
+      <div className="corridor-service-order">{String(service.routeOrder).padStart(2, "0")}</div>
+      <div className="corridor-service-body">
+        <div className="recommendation-meta"><span>{service.category}</span><span>{service.routeArea}</span></div>
+        <h4>{service.name}</h4>
+        <p>{service.address}</p>
+        <div className="corridor-service-details">
+          {service.phone && <span><Phone size={11} />{service.phone}</span>}
+          {service.hours && <span><Clock3 size={11} />{service.hours}</span>}
+        </div>
+        <div className="corridor-service-footer">
+          <small>{service.sourceNote}</small>
+          <a href={`https://www.google.com/maps/search/?api=1&query=${mapQuery}`} target="_blank" rel="noreferrer">Search map <ExternalLink size={11} /></a>
+        </div>
+      </div>
+    </article>
   );
 }
