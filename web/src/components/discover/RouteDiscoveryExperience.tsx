@@ -133,7 +133,7 @@ export default function RouteDiscoveryExperience() {
       setResult(payload);
       setStatus("idle");
     } catch (error) {
-      setErrorMessage(error instanceof Error ? error.message : "Could not reach the YatraAI server.");
+      setErrorMessage(error instanceof Error ? error.message : "Could not reach the Beyond Bharatpur server.");
       setStatus("error");
     }
   }
@@ -142,9 +142,9 @@ export default function RouteDiscoveryExperience() {
     <main className="discover-page">
       <header className="discover-header">
         <div className="discover-header-inner">
-          <Link className="explore-brand" href="/" aria-label="Back to YatraAI home">
+          <Link className="explore-brand" href="/" aria-label="Back to Beyond Bharatpur home">
             <span className="brand-mark"><Compass size={17} /></span>
-            <span>Yatra<span className="brand-ai">AI</span></span>
+            <span>Beyond <span className="brand-ai">Bharatpur</span></span>
           </Link>
           <div className="discover-header-title"><Sparkles size={14} /> Route-aware discovery</div>
           <Link className="map-action-link" href="/explore" aria-label="Open the tourism map">

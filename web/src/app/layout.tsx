@@ -3,12 +3,12 @@ import ServiceWorkerRegistration from "@/components/ServiceWorkerRegistration";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "YatraAI — Discover Bharatpur",
+  title: "Beyond Bharatpur — Discover More",
   description: "Discover Bharatpur with an interactive tourism map and an AI route discovery assistant.",
-  applicationName: "YatraAI",
+  applicationName: "Beyond Bharatpur",
   appleWebApp: {
     capable: true,
-    title: "YatraAI",
+    title: "Beyond Bharatpur",
     statusBarStyle: "default",
   },
 };

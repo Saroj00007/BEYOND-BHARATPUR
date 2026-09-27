@@ -72,7 +72,7 @@ export default function ExploreExperience() {
     <main className="explore-page">
       <header className="explore-header">
         <div className="explore-topline">
-          <Link className="explore-brand" href="/" aria-label="Back to YatraAI home"><span className="brand-mark"><Compass size={17} /></span><span>Yatra<span className="brand-ai">AI</span></span></Link>
+          <Link className="explore-brand" href="/" aria-label="Back to Beyond Bharatpur home"><span className="brand-mark"><Compass size={17} /></span><span>Beyond <span className="brand-ai">Bharatpur</span></span></Link>
           <MapSearch value={search} onChange={setSearch} />
           <Link className="map-action-link" href="/" aria-label="Back to home"><ArrowLeft size={16} /><span>Home</span></Link>
         </div>

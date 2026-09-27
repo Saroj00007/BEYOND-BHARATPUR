@@ -1,5 +1,5 @@
-const CACHE_NAME = "yatraai-shell-v1";
-const STATIC_CACHE = "yatraai-static-v1";
+const CACHE_NAME = "beyond-bharatpur-shell-v2";
+const STATIC_CACHE = "beyond-bharatpur-static-v2";
 const SHELL_URLS = ["/", "/manifest.webmanifest", "/icon.svg"];
 
 self.addEventListener("install", (event) => {
@@ -10,7 +10,7 @@ self.addEventListener("install", (event) => {
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((keys) => Promise.all(
-      keys.filter((key) => key.startsWith("yatraai-") && key !== CACHE_NAME && key !== STATIC_CACHE).map((key) => caches.delete(key)),
+      keys.filter((key) => (key.startsWith("yatraai-") || key.startsWith("beyond-bharatpur-")) && key !== CACHE_NAME && key !== STATIC_CACHE).map((key) => caches.delete(key)),
     )),
   );
   self.clients.claim();

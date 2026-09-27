@@ -2,8 +2,8 @@ import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "YatraAI — Discover Bharatpur",
-    short_name: "YatraAI",
+    name: "Beyond Bharatpur — Discover More",
+    short_name: "Beyond Bharatpur",
     description: "Discover places and useful services around Bharatpur, Nepal.",
     start_url: "/",
     display: "standalone",

@@ -12,9 +12,9 @@ export default function HomePage() {
   return (
     <main className="home-page">
       <header className="site-header">
-        <Link className="brand" href="/" aria-label="YatraAI home">
+        <Link className="brand" href="/" aria-label="Beyond Bharatpur home">
           <span className="brand-mark"><Compass size={20} strokeWidth={2.2} /></span>
-          <span>yatra<span className="brand-ai">ai</span></span>
+          <span>Beyond <span className="brand-ai">Bharatpur</span></span>
         </Link>
         <div className="header-actions">
           <Link className="header-ai-link" href="/discover"><Sparkles size={14} /> AI route finder</Link>
@@ -65,7 +65,7 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-      <footer className="home-footer"><span>YatraAI <span className="footer-separator">/</span> Bharatpur, Nepal</span><span>Made for curious travellers</span></footer>
+      <footer className="home-footer"><span>Beyond Bharatpur <span className="footer-separator">/</span> Bharatpur, Nepal</span><span>Made for curious travellers</span></footer>
     </main>
   );
 }
