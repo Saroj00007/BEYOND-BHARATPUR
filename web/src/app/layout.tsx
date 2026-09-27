@@ -4,7 +4,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "YatraAI — Discover Bharatpur",
-  description: "A lightweight interactive tourism map for Bharatpur, Nepal.",
+  description: "Discover Bharatpur with an interactive tourism map and an AI route discovery assistant.",
   applicationName: "YatraAI",
   appleWebApp: {
     capable: true,

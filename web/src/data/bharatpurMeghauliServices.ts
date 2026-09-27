@@ -1,0 +1,37 @@
+export type BharatpurMeghauliService = {
+  routeOrder: number;
+  routeArea: string;
+  category: string;
+  name: string;
+  address: string;
+  phone: string;
+  hours: string;
+  sourceNote: string;
+};
+
+// Frontend showcase data from bhtomeg.xlsx.
+// Keep this list presentation-only until the map/routing layer is ready to verify exact pins.
+export const bharatpurMeghauliServices: BharatpurMeghauliService[] = [
+  { routeOrder: 1, routeArea: "Chaubiskoti / Bharatpur Airport", category: "Stay", name: "Paris Guest House", address: "Chaubiskoti, Bharatpur", phone: "9860901187", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 1, routeArea: "Chaubiskoti / Bharatpur Airport", category: "Food", name: "Baishnab Sweets Mega Outlet", address: "Airport Road, Bharatpur", phone: "056493652", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 3, routeArea: "Rampur", category: "Stay", name: "Rhino Bamboo Cottage", address: "Rampur Rd, Bharatpur", phone: "056592099", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 3, routeArea: "Rampur", category: "Stay + Food", name: "Chitwan Hideout Cafe & Restaurant", address: "Kirangunj Chowk, Rampur, Bharatpur", phone: "", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 4, routeArea: "Mangalpur", category: "Health", name: "Mangalpur Health Post", address: "VDC Chowk, Mangalpur, Bharatpur", phone: "", hours: "09:00–16:30", sourceNote: "Business listing + municipal health data" },
+  { routeOrder: 3, routeArea: "Rampur", category: "Security", name: "Rampur Police Station / Police Post", address: "Rampur, Bharatpur", phone: "9866128987", hours: "", sourceNote: "Nepal Police directory" },
+  { routeOrder: 5, routeArea: "Chanauli", category: "Security", name: "Chanauli Police Office", address: "Chitraban / Chanauli", phone: "9855083235 / 9855061234", hours: "", sourceNote: "Nepal Police directory" },
+  { routeOrder: 6, routeArea: "Parsadhap / Subedi Chowk", category: "Stay + Food", name: "Friday Cottage Restaurant and Lodge", address: "27 Parsadhap-Subedi Chowk", phone: "9845955161", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 6, routeArea: "Parsadhap / Subedi Chowk", category: "Health", name: "Shukranagar Health Post", address: "Parsadhap-Subedi Chowk", phone: "", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 6, routeArea: "Parsadhap / Subedi Chowk", category: "Security", name: "Area Police Office Dibyanagar", address: "Parsadhap-Subedi Chowk", phone: "9845444020", hours: "24h", sourceNote: "Business listing" },
+  { routeOrder: 7, routeArea: "Meghauli", category: "Stay", name: "Meghauli Serai, A Taj Safari", address: "Chitwan National Park / Meghauli", phone: "9851218500", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 7, routeArea: "Meghauli", category: "Stay", name: "Barahi Jungle Lodge", address: "Andrauli West", phone: "9851355826", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 7, routeArea: "Meghauli", category: "Stay", name: "Chital Lodge & Retreat", address: "Dharampur, Meghauli", phone: "9845951439", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 7, routeArea: "Meghauli", category: "Stay", name: "Golaghat Wildlife Resort", address: "Meghauli 1", phone: "056694083", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 7, routeArea: "Meghauli", category: "Stay", name: "Siddhartha Wildlife Retreat", address: "27 Meghauli", phone: "9851147802", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 7, routeArea: "Meghauli / Bharatpur 22", category: "Stay", name: "Soaltee Westend Resort Chitwan", address: "Bharatpur 22", phone: "", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 7, routeArea: "Bharatpur 22 / Meghauli corridor", category: "Stay", name: "River Bank Jungle Resort", address: "Bharatpur 22", phone: "9705441061", hours: "", sourceNote: "Business listing" },
+  { routeOrder: 7, routeArea: "Meghauli", category: "Health", name: "Meghauli Health Post", address: "Meghauli", phone: "056494065", hours: "", sourceNote: "Business listing + municipal health data" },
+  { routeOrder: 1, routeArea: "Chaubiskoti / Bharatpur Airport", category: "Health", name: "Bharatpur Hospital", address: "Bharatpur", phone: "056520111", hours: "24h", sourceNote: "Municipal directory / business listing" },
+  { routeOrder: 1, routeArea: "Chaubiskoti / Bharatpur Airport", category: "Health", name: "Bharatpur Eye Hospital", address: "Bharatpur", phone: "056520333 / 056493633", hours: "", sourceNote: "Municipal directory / business listing" },
+  { routeOrder: 1, routeArea: "Chaubiskoti / Bharatpur Airport", category: "Security", name: "District Police Office, Chitwan", address: "Hospital Road, Bharatpur", phone: "056594255", hours: "24h", sourceNote: "Municipal directory / business listing" },
+  { routeOrder: 1, routeArea: "Chaubiskoti / Bharatpur Airport", category: "Security", name: "Traffic Police Office, Chitwan", address: "Bharatpur", phone: "9855090100", hours: "", sourceNote: "Municipal directory / business listing" },
+];

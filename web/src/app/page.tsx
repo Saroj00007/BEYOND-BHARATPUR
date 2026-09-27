@@ -16,7 +16,10 @@ export default function HomePage() {
           <span className="brand-mark"><Compass size={20} strokeWidth={2.2} /></span>
           <span>yatra<span className="brand-ai">ai</span></span>
         </Link>
-        <Link className="header-link" href="/explore">Open map <ArrowRight size={15} /></Link>
+        <div className="header-actions">
+          <Link className="header-ai-link" href="/discover"><Sparkles size={14} /> AI route finder</Link>
+          <Link className="header-link" href="/explore">Open map <ArrowRight size={15} /></Link>
+        </div>
       </header>
 
       <section className="home-hero">
@@ -24,7 +27,10 @@ export default function HomePage() {
           <div className="eyebrow"><span className="eyebrow-dot" /> A NEW WAY TO WANDER</div>
           <h1>Discover Bharatpur.<br /><span>Explore More.</span></h1>
           <p className="hero-description">A little more curious, a little less planned. Explore places, find what’s nearby, and make Bharatpur yours.</p>
-          <Link className="primary-cta" href="/explore">Explore Bharatpur <ArrowRight size={18} /></Link>
+          <div className="hero-actions">
+            <Link className="primary-cta" href="/explore">Explore Bharatpur <ArrowRight size={18} /></Link>
+            <Link className="ai-cta" href="/discover"><Sparkles size={16} /> Find places along your route</Link>
+          </div>
           <p className="hero-footnote"><Sparkles size={14} /> Your map. Your pace. Your next favourite place.</p>
         </div>
         <div className="hero-art" aria-label="Illustrated map preview of Bharatpur">
