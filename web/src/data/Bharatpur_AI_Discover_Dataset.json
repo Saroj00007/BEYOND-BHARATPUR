@@ -1,0 +1,699 @@
+{
+  "metadata": {
+    "title": "AI-Powered Discover Bharatpur — Tourism Destination & Service Dataset",
+    "source_note": "Source: user-provided Bharatpur tourism booklet images + current web verification for selected service hubs. Distances/directions are transcribed from the supplied source and should be treated as approximate.",
+    "source_workbook": "Bharatpur_AI_Discover_Dataset.xlsx",
+    "source_sheets": [
+      "Main Destination Table",
+      "Service Directory",
+      "Tourism Circuits",
+      "Activities & AI Features",
+      "Data Notes"
+    ],
+    "format_note": "Cell values are preserved as supplied; distances are approximate and no coordinates or live service details have been added."
+  },
+  "destinations": [
+    {
+      "id": 1,
+      "main_place_block": "मेघौली ब्लक (Meghauli Block)",
+      "ward": "27, 28",
+      "approx_distance_from_bharatpur_reference_point": "25–34 km",
+      "direction": "पश्चिम",
+      "secondary_places_attractions": "राइनो पार्क; गोलाघाट; भोजबाबा; शिवालय पार्क; सामुदायिक वन; घरबास; संग्रहालय",
+      "activities_experience": "जंगल/वन्यजन्तु अवलोकन, birdwatching, सूर्यास्त, थारू संस्कृति, सफारी",
+      "stay_hotel_options": "Meghauli Serai; Siddhartha Wildlife Retreat; Chitwan Bamboo Lodge",
+      "food_restaurant_options": "A4 Restaurant & Lodge; Megh Restaurant & Lodge; resort dining",
+      "health_medical_hospital": "Meghauli Health Post; serious cases → Bharatpur hospitals",
+      "security_police": "Area Police Office Dibyanagar; tourist assistance in the wider Chitwan tourism zone",
+      "nearby_service_hubs_facilities": "Meghauli Airport, local transport, community forests, Golaghat",
+      "data_note": "High-confidence tourism/service hub data; exact nearest service can vary by attraction"
+    },
+    {
+      "id": 2,
+      "main_place_block": "पटिहानी ब्लक (Patihani Block)",
+      "ward": "22",
+      "approx_distance_from_bharatpur_reference_point": "15 km",
+      "direction": "दक्षिण",
+      "secondary_places_attractions": "अम्ब्रेला स्ट्रीट; कमल पोखरी; स्टोन पार्क",
+      "activities_experience": "sunset, riverside viewing, Tharu food/culture, boating/river activities",
+      "stay_hotel_options": "Jungle Villa Resort; River Bank Jungle Resort; nearby Patihani resorts",
+      "food_restaurant_options": "Resort restaurants; local eateries around Patihani/Ambaralla Street",
+      "health_medical_hospital": "Local health services; Bharatpur Hospital as major referral",
+      "security_police": "Tourist Police Post Patihani; local police services",
+      "nearby_service_hubs_facilities": "Kasara/Chitwan National Park HQ area, Rapti River, local shops",
+      "data_note": "Patihani has established tourist hotels/resorts"
+    },
+    {
+      "id": 3,
+      "main_place_block": "देवघाट ब्लक (Devghat Block)",
+      "ward": "1",
+      "approx_distance_from_bharatpur_reference_point": "5–7 km",
+      "direction": "उत्तर",
+      "secondary_places_attractions": "बेनी संगम; आश्रम; वागीश्वरी/वागेश्वरी तथा अन्य मन्दिर",
+      "activities_experience": "pilgrimage, river confluence, temples, ashrams, bathing/ritual visits",
+      "stay_hotel_options": "Local lodges/ashrams; Thimura-side accommodation options",
+      "food_restaurant_options": "Local vegetarian eateries/tea houses; Krishna Hotel area",
+      "health_medical_hospital": "Chhipchhipe Health Post; Baidi Health Post; Bharatpur hospitals for major care",
+      "security_police": "Area Police Office Devghat",
+      "nearby_service_hubs_facilities": "Trishuli–Kali Gandaki/Narayani confluence; religious sites",
+      "data_note": "Devghat spans Bharatpur and adjoining Tanahun-side service areas"
+    },
+    {
+      "id": 4,
+      "main_place_block": "बीसहजारी ताल (Beeshazari Taal)",
+      "ward": "8",
+      "approx_distance_from_bharatpur_reference_point": "8 km",
+      "direction": "पूर्व-दक्षिण",
+      "secondary_places_attractions": "ताल/सिमसार क्षेत्र; आसपासका वन तथा birdwatching areas",
+      "activities_experience": "birdwatching, wetland observation, nature photography",
+      "stay_hotel_options": "Stay primarily in Bharatpur/Gitanagar; local homestays where available",
+      "food_restaurant_options": "Local eateries around access roads; Bharatpur restaurants",
+      "health_medical_hospital": "Gitanagar-area health post; Bharatpur Hospital for major care",
+      "security_police": "Gitanagar Area Police Station; district police referral",
+      "nearby_service_hubs_facilities": "Bharatpur city, Gitanagar, Barandabhar forest corridor",
+      "data_note": "Ramsar/wetland destination; service facilities are concentrated outside the wetland"
+    },
+    {
+      "id": 5,
+      "main_place_block": "ज्ञानेश्वर ब्लक (Gyaneshwar Block)",
+      "ward": "16",
+      "approx_distance_from_bharatpur_reference_point": "10–12 km",
+      "direction": "पश्चिम",
+      "secondary_places_attractions": "सामुदायिक वन; picnic spots; mini zoo; cruise safari; rhino habitat",
+      "activities_experience": "wildlife viewing, picnic, cruise/boat-style activities, forest observation",
+      "stay_hotel_options": "Bharatpur/Gitanagar hotels and resorts; local homestays",
+      "food_restaurant_options": "Gitanagar/Bharatpur restaurants",
+      "health_medical_hospital": "Sahid Ganesh Health Post, Gitanagar; Bharatpur Hospital",
+      "security_police": "Gitanagar Area Police Station",
+      "nearby_service_hubs_facilities": "Narayani River, community forests, Gitanagar service hub",
+      "data_note": "Wildlife activities should follow park/community-forest rules"
+    },
+    {
+      "id": 6,
+      "main_place_block": "दियालो बङ्गला / आँपटारी ब्लक (Diyalo Bangla / Aaptari)",
+      "ward": "1, 2",
+      "approx_distance_from_bharatpur_reference_point": "~5 km",
+      "direction": "उत्तर",
+      "secondary_places_attractions": "Narayani Sea Beach Model; Jaladevi/Satanchuli community forest; Jor Kusum Park; gumbas; lakes",
+      "activities_experience": "riverfront walk, sunset, boating/water activities, heritage viewing, park visit",
+      "stay_hotel_options": "Bharatpur Garden Hotel; Vivanta Chitwan; Hotel Siraichuli",
+      "food_restaurant_options": "Diyalo Foodland; Bhetghat Restaurant; Tandoori Restaurant",
+      "health_medical_hospital": "Bharatpur Hospital; Chitwan Hospital Pvt. Ltd.; Bharatpur Central Hospital",
+      "security_police": "District Police Office Chitwan; Traffic Police Office",
+      "nearby_service_hubs_facilities": "Narayangadh market, Bharatpur Airport, city services",
+      "data_note": "Best connected service hub in the dataset"
+    },
+    {
+      "id": 7,
+      "main_place_block": "चौकीडाँडा ब्लक (Chaukidanda Block)",
+      "ward": "29",
+      "approx_distance_from_bharatpur_reference_point": "14–28 km",
+      "direction": "उत्तर",
+      "secondary_places_attractions": "कविलास गढी; गोल्डेन गुफा; मदन–आश्रित स्मृति पार्क; झरना",
+      "activities_experience": "hiking, sunrise/viewpoint, paragliding area, nature walk",
+      "stay_hotel_options": "Kabilas Resort & Funpark; nearby highway/hill lodges",
+      "food_restaurant_options": "Kabilas Resort dining; local highway eateries",
+      "health_medical_hospital": "Local/basic health services; Bharatpur hospitals for major care",
+      "security_police": "Ramnagar Police Station; district police referral",
+      "nearby_service_hubs_facilities": "Jugedi, Kabilas, Narayangadh–Muglin highway",
+      "data_note": "Hill area has scattered settlements; service density lower than city"
+    },
+    {
+      "id": 8,
+      "main_place_block": "कसरा ब्लक (Kasara Block)",
+      "ward": "23",
+      "approx_distance_from_bharatpur_reference_point": "22–24 km",
+      "direction": "दक्षिण",
+      "secondary_places_attractions": "जगतपुर; गोही प्रजनन केन्द्र; विक्रमबाबा; होमस्टे",
+      "activities_experience": "gharial/crocodile conservation, wildlife, temple visit, homestay, jungle activities",
+      "stay_hotel_options": "Kasara Chitwan Jungle Resort; Jungle Villa Resort (Patihani/Kasara area)",
+      "food_restaurant_options": "Resort restaurants; Patihani/Kasara local eateries",
+      "health_medical_hospital": "Local health post/health services; Bharatpur Hospital referral",
+      "security_police": "Tourist Police Post Patihani; local police; district police referral",
+      "nearby_service_hubs_facilities": "Chitwan National Park HQ/Kasara area, Jagatpur",
+      "data_note": "Access is rural; emergency transfer should be planned"
+    },
+    {
+      "id": 9,
+      "main_place_block": "राइनो कुञ्ज ब्लक (Rhino Kunj Block)",
+      "ward": "13",
+      "approx_distance_from_bharatpur_reference_point": "12–16 km",
+      "direction": "दक्षिण",
+      "secondary_places_attractions": "बाटुली पोखरी; छितामाई; सामुदायिक वन; सीतामाई क्षेत्र",
+      "activities_experience": "forest/wetland visit, religious/cultural sites, wildlife observation",
+      "stay_hotel_options": "Jagatpur/Patihani/Bharatpur accommodation; local homestays",
+      "food_restaurant_options": "Local eateries; Patihani/Jagatpur restaurants",
+      "health_medical_hospital": "Local health services; Bharatpur Hospital referral",
+      "security_police": "Patihani/local police; district police referral",
+      "nearby_service_hubs_facilities": "Patihani, Jagatpur, Kasara service hubs",
+      "data_note": "Exact nearest commercial services should be mapped by GPS in app"
+    },
+    {
+      "id": 10,
+      "main_place_block": "वन्यजन्तु उद्धार केन्द्र (Wildlife Rescue Centre)",
+      "ward": "6",
+      "approx_distance_from_bharatpur_reference_point": "10 km",
+      "direction": "दक्षिण",
+      "secondary_places_attractions": "rescue/wildlife education facilities; nearby community/forest areas",
+      "activities_experience": "wildlife education, observation, conservation learning",
+      "stay_hotel_options": "Bharatpur/Gitanagar hotels; nearby local lodges",
+      "food_restaurant_options": "Gitanagar/Bharatpur restaurants",
+      "health_medical_hospital": "Bharatpur Hospital; Chitwan Hospital Pvt. Ltd.",
+      "security_police": "Gitanagar Area Police Station; district police",
+      "nearby_service_hubs_facilities": "Bharatpur city services, community forests",
+      "data_note": "Use as conservation/education destination; follow visitor rules"
+    },
+    {
+      "id": 11,
+      "main_place_block": "गणेशधाम ब्लक (Ganeshdham Block)",
+      "ward": "11",
+      "approx_distance_from_bharatpur_reference_point": "4 km",
+      "direction": "उत्तर",
+      "secondary_places_attractions": "सामुदायिक वन; ताल; पार्क; मन्दिरहरू",
+      "activities_experience": "temple visit, picnic, park/forest walk, local culture",
+      "stay_hotel_options": "Bharatpur Garden Hotel; Vivanta Chitwan; Hotel Siraichuli",
+      "food_restaurant_options": "Bhetghat Restaurant; Diyalo Foodland; local eateries",
+      "health_medical_hospital": "Bharatpur Hospital; Bharatpur Central Hospital",
+      "security_police": "District Police Office; Traffic Police",
+      "nearby_service_hubs_facilities": "Narayangadh/Bharatpur urban services",
+      "data_note": "Good candidate for short city-side itineraries"
+    },
+    {
+      "id": 12,
+      "main_place_block": "बी.पी. शान्ति नगर वन (B.P. Shanti Nagar Forest)",
+      "ward": "3",
+      "approx_distance_from_bharatpur_reference_point": "3 km",
+      "direction": "पश्चिम",
+      "secondary_places_attractions": "community forest/green area",
+      "activities_experience": "nature walk, birdwatching, short recreation",
+      "stay_hotel_options": "Bharatpur city hotels",
+      "food_restaurant_options": "Narayangadh/Bharatpur restaurants",
+      "health_medical_hospital": "Bharatpur Hospital; Chitwan Hospital",
+      "security_police": "District Police Office; Traffic Police",
+      "nearby_service_hubs_facilities": "Narayangadh market, city transport",
+      "data_note": "Best treated as short-distance urban nature stop"
+    },
+    {
+      "id": 13,
+      "main_place_block": "राइनो ताल ब्लक (Rhino Tal Block)",
+      "ward": "12",
+      "approx_distance_from_bharatpur_reference_point": "2–4 km",
+      "direction": "पूर्व",
+      "secondary_places_attractions": "धनगडा मन्दिर; ताल; सामुदायिक वन",
+      "activities_experience": "wetland viewing, temple visit, nature photography",
+      "stay_hotel_options": "Bharatpur/Ratnanagar-side accommodation depending route",
+      "food_restaurant_options": "Local eateries; Tandi/Ratnanagar restaurants if approaching east",
+      "health_medical_hospital": "Local health post; Bharatpur hospitals for major care",
+      "security_police": "Local/area police; district police referral",
+      "nearby_service_hubs_facilities": "Tandi/Ratnanagar and Bharatpur service hubs",
+      "data_note": "Confirm exact access road and opening status in live map"
+    },
+    {
+      "id": 14,
+      "main_place_block": "सिमरी टाउन ब्लक (Simari Town Block)",
+      "ward": "26",
+      "approx_distance_from_bharatpur_reference_point": "17 km",
+      "direction": "पश्चिम",
+      "secondary_places_attractions": "संग्रहालय; घरबास; अञ्जना ताल; कालिका मन्दिर; community forest",
+      "activities_experience": "homestay, culture, museum, lake/forest visit",
+      "stay_hotel_options": "Local homestays; Bharatpur/Meghauli hotels",
+      "food_restaurant_options": "Local homestay food and eateries; Meghauli restaurants",
+      "health_medical_hospital": "Local health post; Bharatpur Hospital referral",
+      "security_police": "Dibyanagar/local police; district police referral",
+      "nearby_service_hubs_facilities": "Meghauli, Chanauli/Parsa-side services depending route",
+      "data_note": "Homestay and local food are core experience elements"
+    },
+    {
+      "id": 15,
+      "main_place_block": "महाबौद्ध गुम्बा (Mahaboudha Gumba)",
+      "ward": "2",
+      "approx_distance_from_bharatpur_reference_point": "3 km",
+      "direction": "उत्तर",
+      "secondary_places_attractions": "Buddhist monastery/heritage site",
+      "activities_experience": "religious visit, cultural observation, architecture/photography",
+      "stay_hotel_options": "Bharatpur city hotels",
+      "food_restaurant_options": "Bharatpur/Narayangadh restaurants",
+      "health_medical_hospital": "Bharatpur Hospital; Bharatpur Central Hospital",
+      "security_police": "District Police Office; Traffic Police",
+      "nearby_service_hubs_facilities": "Narayangadh market, city transport",
+      "data_note": "Short city-side cultural stop"
+    },
+    {
+      "id": 16,
+      "main_place_block": "गाँजीपुर ब्लक (Ganjipur Block)",
+      "ward": "17",
+      "approx_distance_from_bharatpur_reference_point": "14 km",
+      "direction": "पश्चिम",
+      "secondary_places_attractions": "सामुदायिक वन; ताल; मन्दिर",
+      "activities_experience": "forest/wetland visit, temple, local culture",
+      "stay_hotel_options": "Bharatpur/Meghauli-side hotels and homestays",
+      "food_restaurant_options": "Local eateries; Bharatpur/Meghauli food options",
+      "health_medical_hospital": "Local health services; Bharatpur Hospital referral",
+      "security_police": "Local/area police; district police referral",
+      "nearby_service_hubs_facilities": "Meghauli/Gitanagar/Bharatpur service hubs",
+      "data_note": "Rural service density; map exact nearest facilities"
+    },
+    {
+      "id": 17,
+      "main_place_block": "नेपालको पहिलो सहकारी / बखान बहुउद्देश्यीय सहकारी + रानीपोखरी पार्क",
+      "ward": "19",
+      "approx_distance_from_bharatpur_reference_point": "13 km",
+      "direction": "पश्चिम",
+      "secondary_places_attractions": "बखान बहुउद्देश्यीय सहकारी संस्था; रानीपोखरी पार्क",
+      "activities_experience": "cooperative/agri-tourism, park visit, local community experience",
+      "stay_hotel_options": "Bharatpur/Meghauli-side hotels; local homestays",
+      "food_restaurant_options": "Local eateries; community/homestay food",
+      "health_medical_hospital": "Local health services; Bharatpur Hospital referral",
+      "security_police": "Local/area police; district police referral",
+      "nearby_service_hubs_facilities": "Meghauli/Chanauli/Bharatpur services",
+      "data_note": "Strong candidate for community/agri-tourism storytelling"
+    },
+    {
+      "id": 18,
+      "main_place_block": "संयुक्त राप्ती दून सामुदायिक वन क्षेत्र",
+      "ward": "24",
+      "approx_distance_from_bharatpur_reference_point": "23 km",
+      "direction": "पश्चिम",
+      "secondary_places_attractions": "community forest; buffer-zone landscape",
+      "activities_experience": "forest walk, bird/wildlife observation, nature education",
+      "stay_hotel_options": "Meghauli/Bharatpur hotels; homestays",
+      "food_restaurant_options": "Local community eateries; Meghauli restaurants",
+      "health_medical_hospital": "Meghauli Health Post; Bharatpur Hospital referral",
+      "security_police": "Area Police Office Dibyanagar; district police referral",
+      "nearby_service_hubs_facilities": "Meghauli service hub",
+      "data_note": "Forest access should follow community/park rules"
+    },
+    {
+      "id": 19,
+      "main_place_block": "देवीस्थान पार्क (Devistan Park)",
+      "ward": "24",
+      "approx_distance_from_bharatpur_reference_point": "22 km",
+      "direction": "पश्चिम",
+      "secondary_places_attractions": "park/recreation area; nearby community attractions",
+      "activities_experience": "picnic, recreation, nature stop",
+      "stay_hotel_options": "Bharatpur/Meghauli-side hotels",
+      "food_restaurant_options": "Local eateries; Bharatpur/Meghauli restaurants",
+      "health_medical_hospital": "Meghauli Health Post; Bharatpur Hospital referral",
+      "security_police": "Area Police Office Dibyanagar; district police referral",
+      "nearby_service_hubs_facilities": "Meghauli/Bharatpur services",
+      "data_note": "Verify exact entrance and service locations with map data"
+    },
+    {
+      "id": 20,
+      "main_place_block": "कृषि पर्यटनका मुख्य क्षेत्रहरू (Agri-tourism areas)",
+      "ward": "विभिन्न",
+      "approx_distance_from_bharatpur_reference_point": "विभिन्न",
+      "direction": "विभिन्न",
+      "secondary_places_attractions": "कृषि फार्म; organic production/cooperative sites; village/community experiences",
+      "activities_experience": "farm visit, local food, agri-learning, community tourism",
+      "stay_hotel_options": "Local homestays/farm stays; Bharatpur/Meghauli hotels",
+      "food_restaurant_options": "Farm/local food; community eateries",
+      "health_medical_hospital": "Nearest local health post; Bharatpur hospitals as referral",
+      "security_police": "Nearest area police; district police referral",
+      "nearby_service_hubs_facilities": "Bharatpur, Gitanagar, Meghauli, Jagatpur and other mapped hubs",
+      "data_note": "Needs a separate farm-level dataset for exact facilities"
+    },
+    {
+      "id": 21,
+      "main_place_block": "स्वास्थ्य पर्यटनका मुख्य क्षेत्रहरू (Health-tourism areas)",
+      "ward": "विभिन्न",
+      "approx_distance_from_bharatpur_reference_point": "विभिन्न",
+      "direction": "विभिन्न",
+      "secondary_places_attractions": "Bharatpur medical/health institutions and wellness-oriented services",
+      "activities_experience": "healthcare access, wellness, medical travel support",
+      "stay_hotel_options": "Bharatpur city hotels near medical hubs",
+      "food_restaurant_options": "Restaurants/food services around hospital corridors",
+      "health_medical_hospital": "Bharatpur Hospital; Chitwan Hospital; Bharatpur Central Hospital; other medical institutions",
+      "security_police": "District Police Office; Traffic Police",
+      "nearby_service_hubs_facilities": "Narayangadh/Bharatpur transport, pharmacies and urban services",
+      "data_note": "For the app, use verified hospital directory and emergency contacts rather than generic tourism descriptions"
+    }
+  ],
+  "service_directory": [
+    {
+      "service_hub_area": "Meghauli",
+      "category": "Stay",
+      "name": "Meghauli Serai, A Taj Safari, Chitwan National Park",
+      "location": "Meghauli / National Park area",
+      "verification_note": "Current business listing; resort hotel"
+    },
+    {
+      "service_hub_area": "Meghauli",
+      "category": "Stay",
+      "name": "Siddhartha Wildlife Retreat",
+      "location": "Meghauli Ward 27",
+      "verification_note": "Current business listing; resort hotel"
+    },
+    {
+      "service_hub_area": "Meghauli",
+      "category": "Stay",
+      "name": "Chitwan Bamboo Lodge",
+      "location": "Ward 27 / Meghauli area",
+      "verification_note": "Current business listing; hotel"
+    },
+    {
+      "service_hub_area": "Meghauli",
+      "category": "Food",
+      "name": "A4 Restaurant & Lodge",
+      "location": "Narayani / Meghauli area",
+      "verification_note": "Current business listing; restaurant/lodge"
+    },
+    {
+      "service_hub_area": "Meghauli",
+      "category": "Food",
+      "name": "Megh Restaurant & Lodge",
+      "location": "Narayani / Meghauli area",
+      "verification_note": "Current business listing; restaurant/lodge"
+    },
+    {
+      "service_hub_area": "Meghauli",
+      "category": "Food",
+      "name": "Sanghati Restaurant",
+      "location": "Narayani / Meghauli area",
+      "verification_note": "Current business listing; restaurant"
+    },
+    {
+      "service_hub_area": "Meghauli",
+      "category": "Health",
+      "name": "Meghauli Health Post",
+      "location": "Meghauli",
+      "verification_note": "Current business listing; government health facility"
+    },
+    {
+      "service_hub_area": "Meghauli",
+      "category": "Security",
+      "name": "Area Police Office Dibyanagar",
+      "location": "Parsadhap / Bharatpur 27",
+      "verification_note": "Current business listing; state police"
+    },
+    {
+      "service_hub_area": "Patihani",
+      "category": "Stay",
+      "name": "Jungle Villa Resort",
+      "location": "Patihani / Kasara area",
+      "verification_note": "Current business listing; resort hotel"
+    },
+    {
+      "service_hub_area": "Patihani",
+      "category": "Stay",
+      "name": "River Bank Jungle Resort",
+      "location": "Bharatpur 22",
+      "verification_note": "Current business listing; resort hotel"
+    },
+    {
+      "service_hub_area": "Patihani",
+      "category": "Security",
+      "name": "Tourist Police Post Patihani",
+      "location": "Patihani",
+      "verification_note": "Current web source; verify contact before production use"
+    },
+    {
+      "service_hub_area": "Devghat",
+      "category": "Stay/Food",
+      "name": "Krishna Hotel, Devghat",
+      "location": "Devghat",
+      "verification_note": "Current business listing; small local listing"
+    },
+    {
+      "service_hub_area": "Devghat",
+      "category": "Health",
+      "name": "Chhipchhipe Health Post",
+      "location": "Devghat-03",
+      "verification_note": "Current business listing; medical center"
+    },
+    {
+      "service_hub_area": "Devghat",
+      "category": "Health",
+      "name": "Baidi Health Post, Devghat",
+      "location": "Baidi / Devghat",
+      "verification_note": "Current business listing; government office"
+    },
+    {
+      "service_hub_area": "Devghat",
+      "category": "Security",
+      "name": "Area Police Office Devghat",
+      "location": "Devghat, Tanahun side",
+      "verification_note": "Current business listing; government office"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Stay",
+      "name": "Vivanta Chitwan, Bharatpur",
+      "location": "CG Landmark / Bharatpur",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Stay",
+      "name": "Bharatpur Garden Hotel",
+      "location": "Bharatpur",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Stay",
+      "name": "Hotel Siraichuli",
+      "location": "Bharatpur",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Food",
+      "name": "Bhetghat Restaurant",
+      "location": "Sangam Chowk, Mahendra Highway",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Food",
+      "name": "Diyalo Foodland Restaurant & Banquet",
+      "location": "Bikram Marga, Bharatpur",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Food",
+      "name": "Tandoori Restaurant",
+      "location": "Bharatpur",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Food",
+      "name": "Chitwan Pate Dhido Restaurant",
+      "location": "Bharatpur",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Health",
+      "name": "Bharatpur Hospital",
+      "location": "Bharatpur",
+      "verification_note": "Current business listing; 24-hour listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Health",
+      "name": "Chitwan Hospital Pvt. Ltd.",
+      "location": "Mahendra Highway, Bharatpur",
+      "verification_note": "Current business listing; 24-hour listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Health",
+      "name": "Bharatpur Central Hospital",
+      "location": "Bharatpur",
+      "verification_note": "Current business listing; 24-hour listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Health",
+      "name": "Koshish Hospital Pvt Ltd",
+      "location": "Rijal Chowk, Bharatpur",
+      "verification_note": "Current business listing; 24-hour listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Security",
+      "name": "District Police Office, Chitwan",
+      "location": "Hospital Road, Bharatpur",
+      "verification_note": "Current business listing; 24-hour listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Security",
+      "name": "Traffic Police Office, Chitwan",
+      "location": "Bharatpur",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Bharatpur urban hub",
+      "category": "Security",
+      "name": "Gitanagar Area Police Station",
+      "location": "Gitanagar / Bharatpur",
+      "verification_note": "Current business listing; 24-hour listing"
+    },
+    {
+      "service_hub_area": "Chaukidanda / Kabilas",
+      "category": "Stay",
+      "name": "Kabilas Resort & Funpark",
+      "location": "Tandrang, Bharatpur-29",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Chaukidanda / Kabilas",
+      "category": "Food",
+      "name": "High Five Restaurant and Bar",
+      "location": "Bharatpur",
+      "verification_note": "Current business listing; useful city-side option"
+    },
+    {
+      "service_hub_area": "Chaukidanda / Kabilas",
+      "category": "Security",
+      "name": "Ramnagar Police Station",
+      "location": "Narayangadh–Muglin Highway",
+      "verification_note": "Current business listing; 24-hour listing"
+    },
+    {
+      "service_hub_area": "Kasara / Patihani",
+      "category": "Stay",
+      "name": "Kasara Chitwan - Jungle Resort",
+      "location": "Bharatpur / Kasara",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Kasara / Patihani",
+      "category": "Stay",
+      "name": "Jungle Villa Resort",
+      "location": "Patihani / Kasara",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Kasara / Patihani",
+      "category": "Food",
+      "name": "Resort dining / local eateries",
+      "location": "Kasara–Patihani corridor",
+      "verification_note": "Contextual; exact venue should be GPS-verified"
+    },
+    {
+      "service_hub_area": "Bharatpur 29 / western corridor",
+      "category": "Stay",
+      "name": "Regenta Resort & Spa by Riverside",
+      "location": "Bhateri, Bharatpur-29",
+      "verification_note": "Current business listing"
+    },
+    {
+      "service_hub_area": "Bharatpur 29 / western corridor",
+      "category": "Stay",
+      "name": "Ashoka Resort Pvt. Ltd.",
+      "location": "Bharatpur-29",
+      "verification_note": "Current business listing"
+    }
+  ],
+  "tourism_circuits": [
+    {
+      "circuit": "Lake-side circuit",
+      "places_from_supplied_source": "Tiger (Bagh) Tal; Rhino Tal; Bishazari Tal; Kingfisher Tal; Batuli Pokhari; Atthais Hajar Tal; Ghaila Tal",
+      "suggested_app_use": "Filter by wetlands/lakes; show map route and nearby services"
+    },
+    {
+      "circuit": "Religious circuit",
+      "places_from_supplied_source": "Devghat Dham; Bageshwori; Ganesh Dham; Mahaboudha Gumba; Harihar Mandir; Laxmi Baikunthanath; Mukundeshwar Shivालय; Manakamana Mandir; Kalika Mandir; Bhojbaba; Bikram Baba; Sitaimai/Chhitamai; Laxminarayan",
+      "suggested_app_use": "Religious itinerary generator; temple opening/route/service information"
+    },
+    {
+      "circuit": "Wildlife / nature activities",
+      "places_from_supplied_source": "National park & community forests; elephant safari; jeep safari; jungle walk; boating/rafting; cycling; wildlife observation; sunrise/sunset",
+      "suggested_app_use": "Activity discovery and personalized recommendation"
+    },
+    {
+      "circuit": "Culture / community",
+      "places_from_supplied_source": "Tharu cultural programs; local foods; homestays; museums; cooperative/agri-tourism; village visits",
+      "suggested_app_use": "Community tourism and local-food recommendations"
+    }
+  ],
+  "activities_and_ai_features": [
+    {
+      "category": "Wildlife",
+      "items_from_supplied_tourism_source": "Rare wildlife and birds; wildlife rescue; gharial breeding; jungle safari",
+      "possible_discover_bharatpur_feature": "AI wildlife attraction recommender + rules/safety"
+    },
+    {
+      "category": "Adventure",
+      "items_from_supplied_tourism_source": "Elephant safari; jeep safari; jungle walk; boating; rafting; cycling/biking; paragliding; camping/machan stay",
+      "possible_discover_bharatpur_feature": "Activity filters + personalized experience builder"
+    },
+    {
+      "category": "Culture",
+      "items_from_supplied_tourism_source": "Tharu cultural programs; local/indigenous food; village visit; museums; homestays",
+      "possible_discover_bharatpur_feature": "Culture-first itinerary + local food suggestions"
+    },
+    {
+      "category": "Nature",
+      "items_from_supplied_tourism_source": "Lakes/wetlands; community forests; sunrise/sunset; river viewing",
+      "possible_discover_bharatpur_feature": "Map-based nature trail + photo spots"
+    },
+    {
+      "category": "Religion",
+      "items_from_supplied_tourism_source": "Temples, monasteries, ashrams, religious circuits",
+      "possible_discover_bharatpur_feature": "Religious itinerary planner"
+    },
+    {
+      "category": "Events",
+      "items_from_supplied_tourism_source": "Fairs, festivals, food festivals, conferences, exhibitions",
+      "possible_discover_bharatpur_feature": "Event discovery module"
+    },
+    {
+      "category": "Agriculture",
+      "items_from_supplied_tourism_source": "Farm visits; organic production; cooperative/agri-tourism",
+      "possible_discover_bharatpur_feature": "Agri-tourism discovery"
+    },
+    {
+      "category": "Water tourism",
+      "items_from_supplied_tourism_source": "Narayani/Rapti river activities; boating; lake visits",
+      "possible_discover_bharatpur_feature": "Water activity recommendations"
+    }
+  ],
+  "data_notes": [
+    {
+      "field_topic": "Main place vs secondary place",
+      "guidance_for_your_hackathon_dataset": "Keep the main block/destination as the parent entity. Store each secondary attraction as a child record in your database so the app can return both the parent area and nearby points."
+    },
+    {
+      "field_topic": "Distance",
+      "guidance_for_your_hackathon_dataset": "The distances in the main table are transcribed from the supplied printed source. They are not guaranteed road distances. For the final app, calculate live route distance/time from coordinates."
+    },
+    {
+      "field_topic": "Hotels / restaurants",
+      "guidance_for_your_hackathon_dataset": "Named businesses in the service directory are current web-listed examples. Do not hard-code availability, prices, ratings or opening hours without a live source."
+    },
+    {
+      "field_topic": "Health / hospital",
+      "guidance_for_your_hackathon_dataset": "For remote destinations, show the nearest local health post first and a Bharatpur hospital as a referral option. The app should have an emergency shortcut rather than relying on an LLM to invent medical facilities."
+    },
+    {
+      "field_topic": "Security / police",
+      "guidance_for_your_hackathon_dataset": "Use verified police/tourist-police entries. For production, store official phone numbers separately and verify them before launch."
+    },
+    {
+      "field_topic": "AI/RAG recommendation",
+      "guidance_for_your_hackathon_dataset": "Use this workbook as seed data for a RAG/database layer. The LLM should retrieve structured place/service records before answering tourist questions."
+    },
+    {
+      "field_topic": "Recommended database entities",
+      "guidance_for_your_hackathon_dataset": "Destination; SecondaryPlace; Activity; Hotel; Restaurant; MedicalFacility; Police/Security; TransportHub; Event; Circuit; Source; LastVerifiedAt."
+    },
+    {
+      "field_topic": "Recommended app fields",
+      "guidance_for_your_hackathon_dataset": "name_np; name_en; parent_destination; ward; latitude; longitude; distance_from_reference; direction; category; description; activities; stay_options; food_options; medical_options; police_options; nearby_places; source; last_verified."
+    },
+    {
+      "field_topic": "Safety / accuracy",
+      "guidance_for_your_hackathon_dataset": "Tourism, business, police, hospital and road information can change. Add last_verified timestamps and an admin update panel."
+    },
+    {
+      "field_topic": "Source material",
+      "guidance_for_your_hackathon_dataset": "Primary destination structure comes from the user-provided Bharatpur tourism booklet screenshots. Supporting web context used: Nepal Tourism Board Bharatpur/Meghauli pages; Bharatpur tourism coverage; current business listings checked on 2026-09-27."
+    }
+  ]
+}
