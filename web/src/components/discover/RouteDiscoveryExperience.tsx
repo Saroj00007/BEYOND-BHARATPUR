@@ -63,6 +63,10 @@ type DiscoveryResult = {
     distanceKm: number;
     durationMinutes: number;
     provider: string;
+    geometry?: {
+      type: "LineString";
+      coordinates: Array<[number, number]>;
+    };
   };
   overview: string;
   routeCharacter: string;
@@ -268,6 +272,8 @@ function ResultView({ result }: { result: DiscoveryResult }) {
       <p className="result-overview">{result.overview}</p>
       <div className="route-character"><Route size={16} /><span>{result.routeCharacter}</span></div>
 
+      <RoutePreview route={result.route.geometry?.coordinates} origin={result.origin} destination={result.destination} />
+
       {showCorridorShowcase && <CorridorServiceShowcase services={showcaseServices} />}
 
       {!showCorridorShowcase && <>
@@ -297,6 +303,47 @@ function ResultView({ result }: { result: DiscoveryResult }) {
         {result.sources.length > 0 && <div className="sources-block"><div className="recommendation-heading"><span className="form-step">SOURCES</span><span>{result.sources.length} links</span></div><div className="sources-list">{result.sources.slice(0, 4).map((source) => <a href={source.url} target="_blank" rel="noreferrer" key={source.url}><Search size={12} /><span>{source.title}</span><ExternalLink size={11} /></a>)}</div></div>}
       </div>
     </div>
+  );
+}
+
+function RoutePreview({ route, origin, destination }: { route?: Array<[number, number]>; origin: string; destination: string }) {
+  const hasLiveGeometry = Boolean(route && route.length >= 2);
+  const previewRoute = hasLiveGeometry
+    ? route!
+    : [[0, 0], [0.34, 0.08], [0.67, -0.04], [1, 0]] as Array<[number, number]>;
+  const longitudes = previewRoute.map(([longitude]) => longitude);
+  const latitudes = previewRoute.map(([, latitude]) => latitude);
+  const minLongitude = Math.min(...longitudes);
+  const maxLongitude = Math.max(...longitudes);
+  const minLatitude = Math.min(...latitudes);
+  const maxLatitude = Math.max(...latitudes);
+  const longitudeRange = Math.max(maxLongitude - minLongitude, 0.0001);
+  const latitudeRange = Math.max(maxLatitude - minLatitude, 0.0001);
+  const project = ([longitude, latitude]: [number, number]) => [
+    4 + ((longitude - minLongitude) / longitudeRange) * 92,
+    4 + (1 - (latitude - minLatitude) / latitudeRange) * 48,
+  ] as [number, number];
+  const sampleStep = Math.max(1, Math.ceil(previewRoute.length / 180));
+  const sampledRoute = previewRoute.filter((_, index) => index === 0 || index === previewRoute.length - 1 || index % sampleStep === 0);
+  const points = sampledRoute.map(project);
+  const path = points.map(([x, y], index) => `${index === 0 ? "M" : "L"}${x.toFixed(2)},${y.toFixed(2)}`).join(" ");
+  const start = project(previewRoute[0]);
+  const end = project(previewRoute[previewRoute.length - 1]);
+
+  return (
+    <section className="route-preview-card" aria-label={`Light route preview from ${origin} to ${destination}`}>
+      <div className="route-preview-heading">
+        <span className="form-step">{hasLiveGeometry ? "ROUTE PREVIEW" : "ROUTE OVERVIEW"}</span>
+        <span>{origin} <strong>→</strong> {destination}</span>
+      </div>
+      <svg className="route-preview-svg" viewBox="0 0 100 56" role="img" aria-hidden="true" preserveAspectRatio="none">
+        <path className="route-preview-shadow" d={path} />
+        <path className="route-preview-line" d={path} />
+        <circle className="route-preview-start" cx={start[0]} cy={start[1]} r="2.2" />
+        <circle className="route-preview-end" cx={end[0]} cy={end[1]} r="2.2" />
+      </svg>
+      <div className="route-preview-labels"><span><i className="route-preview-dot route-preview-dot-start" />Origin</span><span>Destination<i className="route-preview-dot route-preview-dot-end" /></span></div>
+    </section>
   );
 }
 
