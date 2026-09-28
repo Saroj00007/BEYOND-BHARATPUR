@@ -69,11 +69,29 @@ type DiscoveryResult = {
   recommendations: Recommendation[];
   tips: string[];
   sources: Array<{ title: string; url: string }>;
-  searchMode: "live-route+tavily+openai" | "live-route+tavily" | "live-route";
+  searchMode: "live-route+tavily+openai" | "live-route+tavily" | "live-route+openai" | "live-route";
   notice?: string;
 };
 
 const interestOptions = ["Nature", "Wildlife", "Birdwatching", "Culture", "Local food", "Photography"];
+
+const routePlaceOptions = [
+  "Bharatpur Airport",
+  "Narayangadh",
+  "Bharatpur",
+  "Chaubiskothi",
+  "Devghat",
+  "Meghauli",
+  "Patihani",
+  "Kasara",
+  "Jagatpur",
+  "Sauraha",
+  "Bachhauli",
+  "Ratnanagar",
+  "Tandi",
+  "Khairahani",
+  "Chitwan National Park",
+];
 
 const initialForm: FormState = {
   origin: "Bharatpur Airport",
@@ -88,6 +106,7 @@ const apiUrl = process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:4000";
 function modeLabel(mode: DiscoveryResult["searchMode"]): string {
   if (mode === "live-route+tavily+openai") return "Live route + web + AI brief";
   if (mode === "live-route+tavily") return "Live route + Tavily sources";
+  if (mode === "live-route+openai") return "Live route + AI brief";
   return "Live route + map data";
 }
 
@@ -174,13 +193,16 @@ export default function RouteDiscoveryExperience() {
             <div className="route-input-grid">
               <label className="route-field">
                 <span><span className="field-dot field-dot-origin" /> Origin</span>
-                <input value={form.origin} onChange={(event) => updateField("origin", event.target.value)} placeholder="e.g. Bharatpur Airport" required />
+                <input list="route-place-options" value={form.origin} onChange={(event) => updateField("origin", event.target.value)} placeholder="e.g. Bharatpur Airport or Sauraha" required />
               </label>
               <label className="route-field">
                 <span><span className="field-dot field-dot-destination" /> Destination</span>
-                <input value={form.destination} onChange={(event) => updateField("destination", event.target.value)} placeholder="e.g. Meghauli" required />
+                <input list="route-place-options" value={form.destination} onChange={(event) => updateField("destination", event.target.value)} placeholder="e.g. Meghauli or Sauraha" required />
               </label>
             </div>
+            <datalist id="route-place-options">
+              {routePlaceOptions.map((place) => <option value={place} key={place} />)}
+            </datalist>
 
             <div className="form-section">
               <span className="form-step">02 / MOOD</span>
@@ -244,10 +266,11 @@ export default function RouteDiscoveryExperience() {
 }
 
 function ResultView({ result }: { result: DiscoveryResult }) {
-  const showCorridorShowcase = isAirportToMeghauliDemo(result);
+  const showCorridorShowcase = isAirportToMeghauliDemo(result) && result.recommendations.length === 0;
   const showcaseServices = showCorridorShowcase
     ? [...bharatpurMeghauliServices].sort((a, b) => a.routeOrder - b.routeOrder || a.name.localeCompare(b.name))
     : [];
+  const hasRenderablePlaces = showCorridorShowcase || result.recommendations.length > 0;
 
   return (
     <div className="result-content">
@@ -258,7 +281,7 @@ function ResultView({ result }: { result: DiscoveryResult }) {
         </div>
         <span className="route-status"><Sparkles size={12} /> AI route brief</span>
       </div>
-      {result.notice && <div className="result-notice"><TriangleAlert size={14} /> {result.notice}</div>}
+      {result.notice && !hasRenderablePlaces && <div className="result-notice"><TriangleAlert size={14} /> {result.notice}</div>}
       <p className="resolved-route">Matched locations: <strong>{result.resolvedOrigin}</strong> → <strong>{result.resolvedDestination}</strong></p>
       <div className="route-metrics" aria-label="Measured route metrics">
         <div><strong>{result.route.distanceKm.toFixed(1)} km</strong><span>road distance</span></div>

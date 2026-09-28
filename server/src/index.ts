@@ -98,13 +98,26 @@ type MeasuredPlace = PlaceCandidate & {
   driveMinutesVia: number;
 };
 
+const placeNoteSchema = z.object({
+  name: z.string().min(1),
+  whyItFits: z.string().min(1),
+  practicalTip: z.string().min(1),
+});
+
 const narrativeSchema = z.object({
   overview: z.string().min(1),
   routeCharacter: z.string().min(1),
   tips: z.array(z.string().min(1)).max(6),
+  placeNotes: z.array(placeNoteSchema).max(8).default([]),
 });
 
-type Narrative = z.infer<typeof narrativeSchema>;
+type PlaceNote = z.infer<typeof placeNoteSchema>;
+type Narrative = {
+  overview: string;
+  routeCharacter: string;
+  tips: string[];
+  placeNotes: PlaceNote[];
+};
 
 type DiscoveryRecommendation = MeasuredPlace & {
   type: string;
@@ -125,7 +138,7 @@ type RouteDiscoveryResponse = DiscoveryPlan & {
   resolvedOrigin: string;
   resolvedDestination: string;
   route: RoadRoute;
-  searchMode: "live-route+tavily+openai" | "live-route+tavily" | "live-route";
+  searchMode: "live-route+tavily+openai" | "live-route+tavily" | "live-route+openai" | "live-route";
   generatedAt: string;
   sources: Array<{ title: string; url: string }>;
   locationResolution: {
@@ -353,8 +366,8 @@ async function geocodeWithPhoton(query: string): Promise<GeocodedPlace | null> {
     const properties = feature.properties ?? {};
     const text = normalizeText(Object.values(properties).filter((value) => value !== undefined).join(" "));
     const country = String(properties.countrycode ?? "").toLowerCase();
-    return country === "np" && /bharatpur|chitwan|meghauli|patihani|kasara|devghat/.test(text)
-      && (text.includes(queryText) || /airport|meghauli|bharatpur/.test(queryText));
+    return country === "np" && /bharatpur|chitwan|meghauli|patihani|kasara|devghat|sauraha|ratnanagar|tandi|bachhauli|khairahani|madi|jagatpur/.test(text)
+      && (text.includes(queryText) || /airport|meghauli|bharatpur|sauraha|ratnanagar|tandi|bachhauli|khairahani|madi|jagatpur/.test(queryText));
   });
   const selected = candidates.find((feature) => feature.geometry?.coordinates?.length === 2);
   if (!selected?.geometry?.coordinates) return null;
@@ -419,7 +432,7 @@ async function geocodePlace(query: string): Promise<GeocodedPlace> {
     const queryText = normalizeText(query);
     const bharatpurResults = results.filter((result) => {
       const text = normalizeText(`${result.name ?? ""} ${result.display_name} ${Object.values(result.address ?? {}).join(" ")}`);
-      return /bharatpur|chitwan|meghauli|patihani|kasara/.test(text);
+      return /bharatpur|chitwan|meghauli|patihani|kasara|devghat|sauraha|ratnanagar|tandi|bachhauli|khairahani|madi|jagatpur/.test(text);
     });
     const crossBoundaryResults = /devghat/i.test(query)
       ? results.filter((result) => normalizeText(`${result.name ?? ""} ${result.display_name}`).includes("devghat"))
@@ -745,6 +758,7 @@ function deterministicNarrative(request: RouteRequest, route: RoadRoute, places:
       "Place names and coordinates come from OpenStreetMap; check access and opening hours before visiting.",
       ...(places.length ? ["Stops are listed in order from the origin and are filtered by their measured extra driving distance."] : ["Try a larger detour setting only if you are happy to travel farther from the direct route."]),
     ],
+    placeNotes: [],
   };
 }
 
@@ -756,33 +770,45 @@ async function aiNarrative(request: RouteRequest, route: RoadRoute, places: Meas
       model: process.env.OPENAI_MODEL ?? "gpt-4o-mini",
       temperature: 0,
     }).withStructuredOutput(narrativeSchema);
-    return await model.invoke(`
-Write a concise route brief for Bharatpur, Nepal.
-Use only the verified facts below. Do not create, remove or rename places. Do not change any distance, duration or detour number.
-The place list is already filtered by live road routing; your output only rewrites the overview, routeCharacter and tips.
+    const generated = await model.invoke(`
+Write a concise, useful route brief for a trip in and around Bharatpur, Chitwan, Nepal.
+Use only the verified facts below. Do not invent, remove or rename places. Do not change any distance, duration or detour number.
+The place list contains verified places physically near the measured road corridor between the origin and destination. Keep placeNotes in driving order from origin to destination and only use exact names from the list.
+For each selected place, explain why it fits the requested interests and add one practical tip. If no places are supplied, return an empty placeNotes array.
 
 Origin: ${request.origin}
 Destination: ${request.destination}
+Interests: ${request.interests.join(", ") || "nature, culture, wildlife and local food"}
+Travel style: ${request.travelStyle}
 Driving route: ${route.distanceKm} km, ${route.durationMinutes} minutes
-Measured places: ${JSON.stringify(places.map((place) => ({ name: place.name, category: place.category, distanceFromOriginKm: place.distanceFromOriginKm, detourKm: place.detourKm })))}
+Verified places between endpoints: ${JSON.stringify(places.map((place) => ({
+  name: place.name,
+  category: place.category,
+  distanceFromOriginKm: place.distanceFromOriginKm,
+  distanceToDestinationKm: place.distanceToDestinationKm,
+  distanceFromRouteKm: place.distanceFromRouteKm,
+  detourKm: place.detourKm,
+})))}
     `);
+    return { ...generated, placeNotes: generated.placeNotes ?? [] };
   } catch (error) {
     console.warn("AI narrative was unavailable; keeping measured route facts.", error);
     return fallback;
   }
 }
 
-function buildRecommendations(request: RouteRequest, places: MeasuredPlace[], webResults: TavilyResult[]): DiscoveryRecommendation[] {
+function buildRecommendations(request: RouteRequest, places: MeasuredPlace[], webResults: TavilyResult[], placeNotes: Narrative["placeNotes"] = []): DiscoveryRecommendation[] {
   return [...places]
-    .sort((a, b) => interestScore(b, request.interests) - interestScore(a, request.interests) || a.distanceAlongRouteKm - b.distanceAlongRouteKm)
+    .sort((a, b) => a.distanceAlongRouteKm - b.distanceAlongRouteKm || interestScore(b, request.interests) - interestScore(a, request.interests))
     .map((place) => {
       const source = findSourceForPlace(place, webResults);
+      const placeNote = placeNotes.find((note) => normalizeText(note.name) === normalizeText(place.name));
       const sourceUrl = source?.url ?? place.sourceUrl;
       return {
         ...place,
         type: place.category,
-        whyItFits: `${place.category} mapped as “${place.name}”, ${formatKm(place.distanceFromRouteKm)} from the route corridor. It is listed because its location and road detour were measured for this route.`,
-        practicalTip: `${formatKm(place.distanceFromOriginKm)} from the origin, ${formatKm(place.distanceToDestinationKm)} to the destination, and ${place.detourKm === 0 ? "no measurable" : `about ${formatKm(place.detourKm)}`} extra driving via this stop. Confirm local access before setting out.`,
+        whyItFits: placeNote?.whyItFits ?? `${place.category} mapped as “${place.name}”, ${formatKm(place.distanceFromRouteKm)} from the route corridor. It is listed because its location and road detour were measured for this route.`,
+        practicalTip: placeNote?.practicalTip ?? `${formatKm(place.distanceFromOriginKm)} from the origin, ${formatKm(place.distanceToDestinationKm)} to the destination, and ${place.detourKm === 0 ? "no measurable" : `about ${formatKm(place.detourKm)}`} extra driving via this stop. Confirm local access before setting out.`,
         detour: place.detourKm === 0 ? "On the measured route" : `+${formatKm(place.detourKm)} detour`,
         sourceUrl,
         sourceLabel: source ? "Read live source" : "OpenStreetMap record",
@@ -844,7 +870,7 @@ const routeGraph = new StateGraph(RouteState)
       webResults,
       plan: {
         ...narrative,
-        recommendations: buildRecommendations(state.request, state.places, webResults),
+        recommendations: buildRecommendations(state.request, state.places, webResults, narrative.placeNotes),
       },
     };
   })
@@ -868,13 +894,18 @@ app.post("/api/discover-route", async (request, response) => {
   try {
     const graphResult = await routeGraph.invoke({ request: parsed.data });
     if (!graphResult.route || !graphResult.origin || !graphResult.destination) throw new RouteDataError("The route could not be resolved.");
+    const fallbackNarrative = deterministicNarrative(parsed.data, graphResult.route, graphResult.places);
     const plan = graphResult.plan ?? {
-      ...deterministicNarrative(parsed.data, graphResult.route, graphResult.places),
-      recommendations: buildRecommendations(parsed.data, graphResult.places, graphResult.webResults),
+      ...fallbackNarrative,
+      recommendations: buildRecommendations(parsed.data, graphResult.places, graphResult.webResults, fallbackNarrative.placeNotes),
     };
-    const searchMode = process.env.TAVILY_API_KEY
-      ? process.env.OPENAI_API_KEY ? "live-route+tavily+openai" : "live-route+tavily"
-      : "live-route";
+    const searchMode = process.env.OPENAI_API_KEY && process.env.TAVILY_API_KEY
+      ? "live-route+tavily+openai"
+      : process.env.TAVILY_API_KEY
+        ? "live-route+tavily"
+        : process.env.OPENAI_API_KEY
+          ? "live-route+openai"
+          : "live-route";
 
     const usedAreaResolution = graphResult.origin.resolution === "dataset-area"
       || graphResult.destination.resolution === "dataset-area";
